@@ -1,0 +1,79 @@
+{
+  "boundary": "These are local legal-support review definitions, not live ABL schedules or notifications.",
+  "automations": [
+    {
+      "id": "legal-support-regression-check",
+      "name": "Legal support regression check",
+      "cadence": "After every prompt, skill, policy, mapping or source-contract change",
+      "purpose": "Run both prompt versions through the same six matter, access and general-IT cases before activation.",
+      "owner": "Legal technology support owner",
+      "hard_limits": {
+        "evaluation_cases_per_version": 6,
+        "provider_calls_per_version": 4,
+        "review_runs_per_demo": 4
+      },
+      "stop_on": [
+        "Any expected state or required control fails",
+        "A reference-data or information-barrier block can be overridden",
+        "An unmapped or restricted case reaches the provider",
+        "A duplicate matter or unauthorised action occurs"
+      ]
+    },
+    {
+      "id": "legal-support-outcome-review",
+      "name": "Weekly legal support outcome review",
+      "cadence": "Weekly during a bounded experiment",
+      "purpose": "Review accepted proposals, corrections, access and matter exceptions, provider usage, review effort and total cost.",
+      "owner": "Digital systems lead",
+      "minimum_evidence": "Representative reviewed service-desk outcomes; six synthetic cases alone are insufficient to scale."
+    },
+    {
+      "id": "legal-support-relevance-review",
+      "name": "Monthly relevance and cost review",
+      "cadence": "Monthly and after a material policy, platform or knowledge change",
+      "purpose": "Decide keep, change, replace with a rule or knowledge article, roll back, retire or stop.",
+      "owner": "Digital systems lead",
+      "checks": [
+        "Business need and named owner still exist",
+        "Authoritative sources and controls remain current",
+        "Quality and handling evidence remain above threshold",
+        "Review, rework and model cost remain proportionate",
+        "No simpler deterministic alternative is better"
+      ]
+    },
+    {
+      "id": "harvey-work-product-regression",
+      "name": "Harvey work-product regression",
+      "cadence": "After every material prompt, skill, workflow, model or knowledge-source change",
+      "purpose": "Rerun approved synthetic matter packs for issue coverage, source integrity, permissions and lawyer reviewability before release.",
+      "owner": "Legal AI product owner",
+      "stop_on": [
+        "A material proposition lacks a verifiable source",
+        "A permission or information-barrier test fails",
+        "The workflow presents work as final legal advice",
+        "A critical expected issue is omitted"
+      ]
+    },
+    {
+      "id": "harvey-adoption-quality-review",
+      "name": "Weekly Harvey adoption and quality review",
+      "cadence": "Weekly during a bounded rollout",
+      "purpose": "Review accepted work products, corrections, review effort, incidents, adoption by role and support demand.",
+      "owner": "Legal AI product owner"
+    },
+    {
+      "id": "harvey-relevance-cost-review",
+      "name": "Monthly Harvey relevance and cost review",
+      "cadence": "Monthly and after a material practice, policy or platform change",
+      "purpose": "Decide keep, change, scale, replace, retire or stop using quality, realised capacity, total cost and safer-alternative evidence.",
+      "owner": "CIO / Digital Systems Lead",
+      "checks": [
+        "Matter-level need and accountable owner still exist",
+        "Sources, permissions and review controls remain current",
+        "Adoption produces accepted work rather than unused output",
+        "Licence, integration, support, training and review cost remain proportionate",
+        "Fixed-fee margin, write-down or capacity claims reconcile to finance data"
+      ]
+    }
+  ]
+}

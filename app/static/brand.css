@@ -1,0 +1,132 @@
+/*
+  ABL-inspired demonstration identity.
+  Derived from public-facing ABL cues; not an official ABL brand guide or asset set.
+*/
+:root {
+  --abl-charcoal: #171716;
+  --abl-charcoal-soft: #383734;
+  --abl-paper: #f2efe8;
+  --abl-white: #fffefb;
+  --abl-stone: #ddd8ce;
+  --abl-sand: #e8dfd2;
+  --abl-accent: #c94f32;
+  --abl-accent-dark: #96351f;
+  --abl-success: #426759;
+  --abl-warning: #a66b22;
+  --abl-danger: #9f3f35;
+  --abl-font-display: Georgia, "Times New Roman", serif;
+  --abl-font-body: Arial, Helvetica, sans-serif;
+  --abl-space-1: 0.375rem;
+  --abl-space-2: 0.75rem;
+  --abl-space-3: 1.125rem;
+  --abl-space-4: 1.75rem;
+  --abl-space-5: 2.75rem;
+  --abl-space-6: 4.5rem;
+  --abl-radius-sm: 2px;
+  --abl-radius-md: 6px;
+  --abl-radius-lg: 12px;
+  --abl-rule: rgba(23, 23, 22, 0.2);
+  --abl-shadow: 0 16px 42px rgba(23, 23, 22, 0.08);
+
+  /* Map the existing UI to one reusable token system. */
+  --ink: var(--abl-charcoal);
+  --ink-soft: var(--abl-charcoal-soft);
+  --soft: var(--abl-charcoal-soft);
+  --paper: var(--abl-paper);
+  --surface: var(--abl-white);
+  --surface-muted: var(--abl-sand);
+  --teal: var(--abl-accent);
+  --teal-dark: var(--abl-accent-dark);
+  --mint: var(--abl-sand);
+  --coral: var(--abl-accent);
+  --amber: var(--abl-warning);
+  --red: var(--abl-danger);
+  --line: var(--abl-rule);
+  --shadow: var(--abl-shadow);
+  --radius-sm: var(--abl-radius-sm);
+  --radius-md: var(--abl-radius-md);
+  --radius-lg: var(--abl-radius-lg);
+}
+
+body {
+  color: var(--abl-charcoal);
+  background: var(--abl-paper);
+  font-family: var(--abl-font-body);
+}
+
+body::before { display: none; }
+h1, h2, blockquote { font-family: var(--abl-font-display); }
+h1, h2, h3, blockquote { letter-spacing: -0.025em; }
+
+.topbar, .proof-top {
+  min-height: 88px;
+  border-bottom: 1px solid var(--abl-charcoal);
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 0;
+  background: var(--abl-charcoal);
+}
+
+.brand strong, .back { letter-spacing: 0.01em; }
+.brand small { letter-spacing: 0.045em; text-transform: uppercase; }
+
+.boundary, .boundary-badge, .human-chip, .confidence-chip, .count-chip {
+  border-radius: var(--abl-radius-sm);
+  color: var(--abl-charcoal);
+  border-color: var(--abl-charcoal);
+  background: transparent;
+}
+
+.pulse { background: var(--abl-accent); box-shadow: none; }
+.eyebrow, .card-kicker, .kicker { color: var(--abl-accent-dark); }
+
+.button {
+  border-radius: var(--abl-radius-sm);
+  letter-spacing: 0.015em;
+}
+
+.button.primary, .principle-card, .decision-card, .improvement-toolbar {
+  color: white;
+  background: var(--abl-charcoal);
+}
+
+.principle-card, .decision-card, .improvement-shell, .harvey-shell,
+.overview-card, .tile, .cue, .callout, .proof-banner, .content-card,
+.outcome-card, .score-card, .scenario-button, .activation-card {
+  border-radius: var(--abl-radius-md);
+}
+
+.principle-card::after, .empty-orbit { display: none; }
+.principle-rule { background: var(--abl-accent); }
+
+.hero, .proof-hero {
+  background: linear-gradient(90deg, transparent 0 68%, rgba(201, 79, 50, 0.055) 68% 100%);
+}
+
+.proof-banner, .callout, .connector-strip {
+  background: var(--abl-charcoal);
+}
+
+.proof-map a, .overview-card, .tile, .cue, .content-card, .outcome-card, .score-card {
+  background: var(--abl-white);
+  box-shadow: none;
+}
+
+.proof-map a:hover, .overview-card:hover {
+  border-color: var(--abl-accent);
+  box-shadow: var(--abl-shadow);
+}
+
+.proof-evidence article, .evidence { border-color: var(--abl-accent); }
+.guardrail { border-color: var(--abl-charcoal); }
+
+.status-banner.awaiting_approval, .stack-item.review { border-color: var(--abl-warning); }
+.stack-item.pass, .regression-row.pass { border-color: var(--abl-success); }
+.status-banner.blocked, .stack-item.block, .regression-row.fail { border-color: var(--abl-danger); }
+
+@media print {
+  body { background: white; }
+}

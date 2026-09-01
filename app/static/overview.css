@@ -1,0 +1,13 @@
+.overview-hero { min-height: 570px; }
+.overview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.overview-card { display: block; min-height: 250px; padding: 30px; color: inherit; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); text-decoration: none; transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease; }
+.overview-card:first-child { grid-column: span 2; }
+.overview-card:hover { transform: translateY(-3px); border-color: var(--teal); box-shadow: 0 16px 36px rgba(16,42,44,.1); }
+.overview-card span { color: var(--teal); font-size: .72rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+.overview-card h2 { margin: 18px 0 12px; font: 500 2.1rem Georgia, serif; }
+.overview-card p { max-width: 650px; color: var(--soft); }
+.overview-card strong { color: var(--teal); }
+.overview-workbench { margin-top: 28px; }
+.overview-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.secondary-button { color: white; border: 1px solid rgba(255,255,255,.3); background: transparent; }
+@media (max-width: 560px) { .overview-grid { grid-template-columns: 1fr; } .overview-card:first-child { grid-column: span 1; } }

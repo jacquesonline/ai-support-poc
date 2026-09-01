@@ -1,0 +1,4 @@
+interface:
+  display_name: "Controlled Legal Support"
+  short_description: "Prepare governed legal-technology support proposals"
+  default_prompt: "Use $legal-support-resolution to investigate a synthetic legal-technology ticket and prepare a governed proposal."

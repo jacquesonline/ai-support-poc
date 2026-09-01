@@ -1,0 +1,9 @@
+services:
+  support-poc:
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+
+# Zammad is intentionally a separate stack. Start its official Docker Compose
+# project, then set TICKET_BACKEND=zammad and ZAMMAD_URL/ZAMMAD_TOKEN here.

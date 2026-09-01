@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harvey Legal Work"
+  short_description: "Prepare governed Harvey-assisted legal work"
+  default_prompt: "Use $harvey-legal-work to prepare a source-grounded legal work product for lawyer review."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Legal Support Improvement"
+  short_description: "Test and govern improvements to the legal support POC"
+  default_prompt: "Use $legal-support-improvement to compare active and candidate prompts against the six legal-support cases."

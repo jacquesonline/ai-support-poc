@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harvey Value Review"
+  short_description: "Review Harvey quality, adoption, relevance and cost"
+  default_prompt: "Use $harvey-value-review to assess a Harvey use case and recommend keep, change, scale, retire or stop."
