@@ -111,7 +111,7 @@ def test_demo_contract_is_legal_support_and_self_contained():
     assert all(f'/proofs/{name}' in chooser.text for name in ("matter", "support", "harvey", "improvement", "value"))
     full_workbench = client.get("/workbench/full")
     assert full_workbench.status_code == 200
-    assert "Choose a case" in full_workbench.text
+    assert "Choose a proof point" in full_workbench.text
     brief = client.get("/demo/brief").json()
     assert "ABL-style" in brief["boundary"]
     assert "not abl" in brief["boundary"].lower()
@@ -141,6 +141,23 @@ def test_each_cio_proof_point_has_a_separate_narrative_page():
         assert "CIO overview" not in page.text
         assert "Kris" not in page.text
     assert client.get("/proofs/unknown").status_code == 404
+
+
+def test_working_evidence_is_split_into_focused_proof_pages():
+    client = TestClient(app)
+    expected = {
+        "matter": ("focus-matter", "Choose a case"),
+        "support": ("focus-support", "Choose a case"),
+        "harvey": ("Harvey use-case demonstrator", "Assess this pilot design"),
+        "improvement": ("focus-improvement", "Run support regression check"),
+        "value": ("focus-value", "Experiment scorecard"),
+    }
+    for proof, phrases in expected.items():
+        page = client.get(f"/workbench/{proof}")
+        assert page.status_code == 200
+        assert all(phrase in page.text for phrase in phrases)
+    assert client.get("/workbench/unknown").status_code == 404
+    assert "former combined workbench has been retired" in client.get("/workbench/full").text
 
 
 def test_presenter_cheat_sheet_covers_narrative_system_proof_and_release_rules():

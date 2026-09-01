@@ -50,7 +50,7 @@ python -m pip install -e ".[dev]"
 .\start-demo.ps1
 ```
 
-Open the [executive overview](http://127.0.0.1:8017/). The default mode is credential-free and uses only in-memory synthetic data. The [proof-point chooser](http://127.0.0.1:8017/workbench), [Demo's Rational](http://127.0.0.1:8017/cheatsheet) and optional [full evidence workbench](http://127.0.0.1:8017/workbench/full) are separate routes.
+Open the [executive overview](http://127.0.0.1:8017/). The default mode is credential-free and uses only in-memory synthetic data. The [proof-point chooser](http://127.0.0.1:8017/workbench) and [Demo's Rational](http://127.0.0.1:8017/cheatsheet) are separate routes. Working evidence is split across focused pages for [matter opening](http://127.0.0.1:8017/workbench/matter), [support](http://127.0.0.1:8017/workbench/support), [Harvey](http://127.0.0.1:8017/workbench/harvey), [continuous improvement](http://127.0.0.1:8017/workbench/improvement) and [value](http://127.0.0.1:8017/workbench/value).
 
 The presentation-only GitHub Pages edition is published at [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/). GitHub Pages cannot run the FastAPI backend, so interactive ticket actions and evaluation runs remain available in the local application. The Pages workflow exports the overview, proof pages, selector and rationale after each push to `main`.
 

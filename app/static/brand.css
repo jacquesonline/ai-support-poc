@@ -172,8 +172,12 @@ h1, h2, h3, blockquote { letter-spacing: -0.025em; }
 }
 .aspiration-panel h2 { margin: 0; font-size: 2.15rem; line-height: 1.05; }
 .aspiration-panel > p { margin: 0; color: rgba(255,255,255,.72); }
+.focused-nav { display: flex; gap: 17px; }
+.focused-nav a { color: var(--abl-charcoal-soft); font-size: .72rem; font-weight: 800; text-decoration: none; text-transform: uppercase; }
+.focused-nav a[aria-current="page"] { color: var(--abl-accent-dark); }
 
 @media (max-width: 560px) {
   .aspiration-grid { grid-template-columns: 1fr; }
   .aspiration-panel { grid-template-columns: 1fr; }
+  .focused-nav { display: none; }
 }

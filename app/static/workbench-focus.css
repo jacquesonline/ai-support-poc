@@ -1,0 +1,30 @@
+.focused-workbench .hero,
+.focused-workbench .story-section,
+.focused-workbench .conversation-section,
+.focused-workbench .outcome-band,
+.focused-workbench .workflow-intro,
+.focused-workbench .control-room,
+.focused-workbench .harvey-section,
+.focused-workbench .improvement-section,
+.focused-workbench .measurement-section,
+.focused-workbench .footer-grid { display: none; }
+
+.focused-workbench .topbar { position: sticky; z-index: 20; top: 0; background: var(--abl-paper); }
+.focused-workbench main { padding-top: 38px; }
+.focused-workbench .proof-nav a { white-space: nowrap; }
+.focused-workbench.focus-matter .outcome-band,
+.focused-workbench.focus-matter .control-room,
+.focused-workbench.focus-support .workflow-intro,
+.focused-workbench.focus-support .control-room,
+.focused-workbench.focus-improvement .improvement-section,
+.focused-workbench.focus-value .measurement-section { display: block; }
+.focused-workbench.focus-matter .control-room,
+.focused-workbench.focus-support .control-room { display: grid; }
+.focused-workbench .outcome-band,
+.focused-workbench .workflow-intro,
+.focused-workbench .improvement-section,
+.focused-workbench .measurement-section { padding-top: 30px; }
+
+@media (max-width: 900px) {
+  .focused-workbench .proof-nav { overflow-x: auto; }
+}

@@ -514,13 +514,15 @@ async function initialise() {
       fetchJson("/harvey/overview"),
     ]);
     state.brief = brief;
-    state.scenarios = scenarios;
+    state.scenarios = document.body.dataset.workbenchView === "matter"
+      ? scenarios.filter((scenario) => scenario.category === "matter_opening")
+      : scenarios;
     renderBrief();
     renderScenarios();
     renderImprovementOverview(improvement);
     renderHarveyOverview(harvey);
     await refreshScorecard();
-    selectScenario(scenarios[0]?.id || null);
+    selectScenario(state.scenarios[0]?.id || null);
   } catch (error) {
     showToast(`Demo could not load: ${error.message}`);
   }

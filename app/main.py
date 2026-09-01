@@ -73,7 +73,20 @@ def demo_workbench() -> HTMLResponse:
 
 @app.get("/workbench/full", include_in_schema=False)
 def full_demo_workbench() -> HTMLResponse:
-    return branded_page("index.html")
+    return branded_page("workbench-menu.html")
+
+
+@app.get("/workbench/{proof_name}", include_in_schema=False)
+def focused_workbench(proof_name: str) -> HTMLResponse:
+    supported = {"matter", "support", "harvey", "improvement", "value"}
+    if proof_name not in supported:
+        raise HTTPException(404, "Working proof point not found")
+    if proof_name == "harvey":
+        return branded_page("harvey-demo.html")
+    html = branded_page("index.html").body.decode("utf-8")
+    html = html.replace("</head>", '<link rel="stylesheet" href="/static/workbench-focus.css"></head>')
+    html = html.replace("<body>", f'<body class="focused-workbench focus-{proof_name}" data-workbench-view="{proof_name}">')
+    return HTMLResponse(html)
 
 
 @app.get("/cheatsheet", include_in_schema=False)
