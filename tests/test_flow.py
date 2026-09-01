@@ -137,6 +137,8 @@ def test_each_cio_proof_point_has_a_separate_narrative_page():
         assert page.status_code == 200
         assert heading in page.text
         assert 'class="decision-card"' in page.text
+        assert "Home (Legal Technology AI Demonstration)" in page.text
+        assert "CIO overview" not in page.text
         assert "Kris" not in page.text
     assert client.get("/proofs/unknown").status_code == 404
 
