@@ -12,7 +12,7 @@
 .wheel-button strong { margin-top: 6px; font-size: 1rem; }
 .wheel-button:hover, .wheel-button:focus-visible { z-index: 4; color: white; outline: none; background: var(--abl-accent-dark); transform: translate(-50%, -50%) scale(1.05); }
 .wheel-button:hover span, .wheel-button:focus-visible span { color: var(--abl-sand); }
-.wheel-1 { top: 4%; left: 50%; transform: translate(-50%, -50%); }
+.wheel-1 { top: 12%; left: 50%; transform: translate(-50%, -50%); }
 .wheel-2 { top: 34%; left: 88%; transform: translate(-50%, -50%); }
 .wheel-3 { top: 80%; left: 74%; transform: translate(-50%, -50%); }
 .wheel-4 { top: 80%; left: 26%; transform: translate(-50%, -50%); }
