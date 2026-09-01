@@ -37,8 +37,8 @@ class SupportImprovementService:
         self.evaluation_model_call_cap = evaluation_model_call_cap
         self.review_spend_cap_aud = review_spend_cap_aud
         self.prompt_paths = {
-            "1.0.0": project_root / "documents" / "general" / "prompts" / "support-investigation.md",
-            "1.1.0": project_root / "documents" / "general" / "prompts" / "support-investigation.v1.1-candidate.md",
+            "1.0.0": project_root / "prompts" / "support-investigation.md",
+            "1.1.0": project_root / "prompts" / "support-investigation.v1.1-candidate.md",
         }
         self.automation_register = json.loads(
             (project_root / "automations" / "support-review-register.json").read_text(encoding="utf-8")
@@ -77,7 +77,7 @@ class SupportImprovementService:
             "reuse": [
                 {
                     "name": "Support resolution skill",
-                    "path": "documents/general/skills/legal-support-resolution/SKILL.md",
+                    "path": "skills/legal-support-resolution/SKILL.md",
                     "role": "Reuses matter, access and general-IT evidence → policy → approval → measurement.",
                 },
                 {
@@ -87,7 +87,7 @@ class SupportImprovementService:
                 },
                 {
                     "name": "Support improvement skill",
-                    "path": "documents/general/skills/legal-support-improvement/SKILL.md",
+                    "path": "skills/legal-support-improvement/SKILL.md",
                     "role": "Runs the same legal-support regression contract before a version can change.",
                 },
             ],

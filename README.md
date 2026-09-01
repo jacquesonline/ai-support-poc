@@ -79,10 +79,10 @@ Detailed references:
 - `app/` — FastAPI application, synthetic workflows, policy controls and presentation UI.
 - `tests/` — credential-free integration and control tests.
 - `documents/demo/` — only the material needed to prepare and deliver the demonstration.
-- `documents/general/` — architecture, sharing, design, prompts, governance contracts and reusable skills.
-- `documents/general/prompts/` — active, candidate, oversight and Harvey legal-work prompts.
-- `documents/general/skills/` — reusable support, improvement, Harvey-work and value-review packages.
-- `documents/general/governance/` — activation, rollback, stop and ownership contracts.
+- `documents/general/` — architecture, sharing and visual-design documentation.
+- `prompts/` — active, candidate, oversight and Harvey legal-work prompts.
+- `skills/` — reusable support, improvement, Harvey-work and value-review packages.
+- `governance/` — activation, rollback, stop and ownership contracts.
 - `automations/` — review definitions; these are examples, not live scheduled jobs.
 - `scripts/` and `share/` — static presentation export and supporting assets.
 
@@ -127,19 +127,52 @@ See the [demonstration guide](documents/demo/DEMO_GUIDE.md) for the full spoken 
 
 ### Reusable and reviewable assets
 
-- `documents/general/skills/legal-support-resolution/` — governed matter, access and general-IT triage.
-- `documents/general/skills/legal-support-improvement/` — six-case version and regression review.
-- `documents/general/skills/harvey-legal-work/` — source-grounded Harvey work-product contract.
-- `documents/general/skills/harvey-value-review/` — adoption, quality, relevance and commercial evidence review.
-- `documents/general/prompts/harvey-*.md` — four synthetic legal-work patterns.
-- `documents/general/prompts/support-investigation.md` — active v1.0 prompt.
-- `documents/general/prompts/support-investigation.v1.1-candidate.md` — inactive candidate.
-- `documents/general/prompts/support-regression-review.md` — support-specific regression contract.
-- `documents/general/prompts/support-oversight.md` — quality, relevance, governance and cost decision prompt.
-- `automations/support-review-register.json` — change-triggered, weekly and monthly review definitions.
-- `documents/general/governance/` — activation, rollback, stop and ownership controls.
+#### `skills/`
 
-The automation files demonstrate schedules and review contracts; they do not create a live ABL job or send notifications.
+Contains four reusable workflow packages. Each package separates the operating instructions, agent-facing metadata and detailed control contract so the method can be inspected and versioned.
+
+- `legal-support-resolution/SKILL.md` — governs evidence-bound triage for matter opening, replay, recovery, restricted access and general IT requests.
+- `legal-support-resolution/references/control-contract.md` — defines permitted evidence, mandatory stops, required outputs and actions the support workflow may not take.
+- `legal-support-resolution/agents/openai.yaml` — provides the agent metadata used to present and invoke the legal-support resolution skill.
+- `legal-support-improvement/SKILL.md` — evaluates active and candidate support workflows against the same six synthetic cases before a version decision.
+- `legal-support-improvement/references/review-contract.md` — specifies the regression evidence and the activate, keep, reject or stop decisions available to the owner.
+- `legal-support-improvement/agents/openai.yaml` — provides the agent metadata for the support-improvement skill.
+- `harvey-legal-work/SKILL.md` — frames source-grounded, lawyer-reviewed litigation, research, due-diligence and knowledge-reuse work.
+- `harvey-legal-work/references/work-product-contract.md` — defines the required brief, reviewable output sections and prohibited autonomous legal outcomes.
+- `harvey-legal-work/agents/openai.yaml` — provides the agent metadata for the governed Harvey legal-work skill.
+- `harvey-value-review/SKILL.md` — reviews Harvey use cases for quality, adoption, continuing relevance, governance and total cost.
+- `harvey-value-review/references/value-contract.md` — defines the quality, economics, governance and stop evidence required for a value decision.
+- `harvey-value-review/agents/openai.yaml` — provides the agent metadata for the Harvey value-review skill.
+
+#### `prompts/`
+
+Contains the versioned task instructions used by the support regression and the four synthetic Harvey legal-work patterns.
+
+- `support-investigation.md` — active v1.0 instructions for investigating a legal-technology support request.
+- `support-investigation.v1.1-candidate.md` — inactive candidate that removes instructions already enforced by deterministic controls.
+- `support-regression-review.md` — compares prompt versions against the six-case support contract and reports regressions without activating a change.
+- `support-oversight.md` — supports quality, relevance, governance, cost and safer-alternative review decisions.
+- `harvey-litigation-preparation.md` — structures chronology, issue, evidence-gap and source-backed litigation preparation.
+- `harvey-legal-research.md` — structures jurisdiction-aware legal research and a lawyer-reviewable first draft.
+- `harvey-diligence-review.md` — structures consistent document review against an approved issue taxonomy.
+- `harvey-knowledge-reuse.md` — supports permission-aware selection and adaptation of current precedents and playbooks.
+
+#### `governance/`
+
+Contains the decision rights, evidence requirements and change controls that sit around the prompts and skills.
+
+- `change-policy.md` — defines ownership, required evidence, approval, rollback and stop rules for governed changes.
+- `change-log.md` — records the purpose and control changes introduced by each proof-of-concept version.
+- `support-improvement-contract.md` — defines the improvement hypothesis, generated evidence, activation boundary and rollback position for support prompts.
+- `harvey-operating-contract.md` — defines Harvey decision rights, legal outcome boundaries and the evidence required before scaling a use case.
+
+#### `automations/`
+
+Contains review schedules and triggers represented as inspectable definitions rather than live production jobs.
+
+- `support-review-register.json` — defines change-triggered regression, weekly outcome and monthly relevance/cost reviews for support and Harvey workflows, including owners and stop conditions.
+
+The automation register does not schedule a live ABL job or send notifications.
 
 ### What better outcomes mean
 
