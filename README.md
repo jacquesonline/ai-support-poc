@@ -1,5 +1,7 @@
 # Legal Technology Support Control Room
 
+The presentation-only GitHub Pages edition is published at [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/).
+
 A standalone demonstration of how a Digital Systems Lead could connect an ABL-style matter transaction, an AI-enabled legal-technology support desk, Harvey-assisted legal work and governed continuous improvement.
 
 ABL publicly announced an agreement with Harvey on 1 September 2025 after a trial and co-development period. That public fact provides context only. Every ticket, legal-work pack, prompt result, time comparison and outcome in this project is synthetic; none represents ABL's private Harvey configuration, matter data, adoption, cost or realised results.
