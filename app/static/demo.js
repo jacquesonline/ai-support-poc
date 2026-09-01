@@ -143,7 +143,17 @@ function selectScenario(id) {
   } else {
     el("case-empty").hidden = false;
     el("case-view").hidden = true;
+    setCaseEmptyState(false);
   }
+}
+
+function setCaseEmptyState(loading) {
+  const empty = el("case-empty");
+  empty.classList.toggle("is-loading", loading);
+  el("case-empty-title").textContent = loading ? "Checking evidence…" : "Ready to investigate";
+  el("case-empty-copy").textContent = loading
+    ? "Reading the request, authoritative evidence and deterministic controls."
+    : "Select a case and run the investigation. This demonstration uses synthetic evidence and contacts no external system.";
 }
 
 function statusCopy(caseRecord) {
@@ -418,6 +428,8 @@ async function runSelectedCase() {
   const original = button.textContent;
   button.disabled = true;
   button.textContent = "Checking evidence…";
+  el("case-empty").hidden = false;
+  setCaseEmptyState(true);
   try {
     const caseRecord = await fetchJson(`/tickets/${encodeURIComponent(state.selectedId)}/investigate`, { method: "POST" });
     state.cases.set(state.selectedId, caseRecord);
@@ -431,6 +443,7 @@ async function runSelectedCase() {
   } finally {
     button.disabled = false;
     button.textContent = state.cases.has(state.selectedId) ? "Run again" : original;
+    if (!state.cases.has(state.selectedId)) setCaseEmptyState(false);
   }
 }
 
