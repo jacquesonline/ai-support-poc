@@ -41,8 +41,8 @@ USE_CASES = [
         "need": "Build a reliable chronology, issue matrix and source-backed argument framework from a large matter set.",
         "better_outcome": "More complete preparation, earlier gap detection and stronger source discipline for lawyer-led advocacy.",
         "not_claimed": "Harvey does not determine strategy, advocacy or the court result.",
-        "prompt_path": "prompts/harvey-litigation-preparation.md",
-        "skill_path": "skills/harvey-legal-work/SKILL.md",
+        "prompt_path": "documents/general/prompts/harvey-litigation-preparation.md",
+        "skill_path": "documents/general/skills/harvey-legal-work/SKILL.md",
     },
     {
         "id": "legal-research-draft",
@@ -52,8 +52,8 @@ USE_CASES = [
         "need": "Create a source table and reviewable first-draft structure without losing jurisdiction, currency or contrary authority.",
         "better_outcome": "Faster route to a lawyer-verified draft with visible authorities, gaps and counterarguments.",
         "not_claimed": "The output is not final advice and every material proposition requires lawyer verification.",
-        "prompt_path": "prompts/harvey-legal-research.md",
-        "skill_path": "skills/harvey-legal-work/SKILL.md",
+        "prompt_path": "documents/general/prompts/harvey-legal-research.md",
+        "skill_path": "documents/general/skills/harvey-legal-work/SKILL.md",
     },
     {
         "id": "diligence-review",
@@ -63,8 +63,8 @@ USE_CASES = [
         "need": "Review a document set consistently against an approved issue taxonomy and expose red flags for lawyer judgement.",
         "better_outcome": "More consistent issue coverage, structured review evidence and capacity for higher-value analysis.",
         "not_claimed": "Extraction is not the final legal or commercial risk decision.",
-        "prompt_path": "prompts/harvey-diligence-review.md",
-        "skill_path": "skills/harvey-legal-work/SKILL.md",
+        "prompt_path": "documents/general/prompts/harvey-diligence-review.md",
+        "skill_path": "documents/general/skills/harvey-legal-work/SKILL.md",
     },
     {
         "id": "knowledge-reuse",
@@ -74,8 +74,8 @@ USE_CASES = [
         "need": "Find current, permission-appropriate precedents and playbooks without rediscovery or cross-matter leakage.",
         "better_outcome": "Faster, more consistent starting work with limitations and superseded material visible.",
         "not_claimed": "A precedent is not automatically current or suitable for the matter.",
-        "prompt_path": "prompts/harvey-knowledge-reuse.md",
-        "skill_path": "skills/harvey-legal-work/SKILL.md",
+        "prompt_path": "documents/general/prompts/harvey-knowledge-reuse.md",
+        "skill_path": "documents/general/skills/harvey-legal-work/SKILL.md",
     },
 ]
 

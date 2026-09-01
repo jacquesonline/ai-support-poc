@@ -2,7 +2,7 @@
 
 ## Evidence required
 
-- Active and candidate prompt files in `prompts/`.
+- Active and candidate prompt files in `documents/general/prompts/`.
 - The six matter-opening, access and general-IT scenarios in `app/demo.py`.
 - Approval-gate, recovery, reference-data, information-barrier and pre-provider-stop results.
 - Provider calls avoided, prompt characters, local token proxy and actual or estimated spend.
