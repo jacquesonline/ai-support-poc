@@ -7,10 +7,10 @@ This repository is designed to be shared privately for review. It contains synth
 1. Create the repository as **Private**.
 2. Push the default branch.
 3. In GitHub, open **Settings → Collaborators and teams → Add people**.
-4. Invite Kris using the GitHub username or email address Kris uses for GitHub.
+4. Invite the intended reviewer using their GitHub username or email address.
 5. Share the repository URL only after the invitation has been accepted.
 
-A private GitHub repository link provides source-code access; it does not provide a running web application. Kris must have a GitHub account and accept the invitation.
+A private GitHub repository link provides source-code access; it does not provide a running web application. The reviewer must have a GitHub account and accept the invitation.
 
 ## Running the demonstration
 
@@ -21,10 +21,10 @@ Copy-Item .env.example .env
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -e ".[dev]"
-python -m uvicorn app.main:app
+.\start-demo.ps1
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://127.0.0.1:8017/`.
 
 ## Security controls
 

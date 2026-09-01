@@ -47,10 +47,12 @@ Copy-Item .env.example .env
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -e ".[dev]"
-python -m uvicorn app.main:app --reload
+.\start-demo.ps1
 ```
 
-Open [http://localhost:8000](http://localhost:8000). The default mode is credential-free and uses only in-memory synthetic data.
+Open the [executive overview](http://127.0.0.1:8017/). The default mode is credential-free and uses only in-memory synthetic data. The [proof-point chooser](http://127.0.0.1:8017/workbench), [Demo's Rational](http://127.0.0.1:8017/cheatsheet) and optional [full evidence workbench](http://127.0.0.1:8017/workbench/full) are separate routes.
+
+The presentation-only GitHub Pages edition is published at [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/). GitHub Pages cannot run the FastAPI backend, so interactive ticket actions and evaluation runs remain available in the local application. The Pages workflow exports the overview, proof pages, selector and rationale after each push to `main`.
 
 ## CIO demonstration route
 
@@ -60,7 +62,7 @@ Open [http://localhost:8000](http://localhost:8000). The default mode is credent
 4. Run **Unmapped office reference** and **Restricted matter access**; both stop before provider use and reject an approval override.
 5. Run **Document add-in unavailable** to show safe day-to-day IT guidance and data minimisation.
 6. Run the four-use-case Harvey readiness review. Show that every proposed pilot has sources, review, measures and stops, while quality, time and value remain unproven until representative ABL work is evaluated.
-7. Treat synthetic time released as a capacity hypothesis. Profit requires actual licence, integration, training, support, review, write-down, fixed-fee and realised-revenue evidence.
+7. Make the evidence boundary explicit: the readiness review proves the pilot design, while quality, capacity and financial value require representative ABL work, a baseline and full operating cost.
 8. Run the six-case prompt regression and show that activation remains a named decision.
 9. Close on change-triggered regression, weekly adoption and quality review, monthly relevance and total-cost decisions, and the option to change, replace, retire or stop.
 

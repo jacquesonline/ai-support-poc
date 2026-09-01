@@ -130,3 +130,17 @@ h1, h2, h3, blockquote { letter-spacing: -0.025em; }
 @media print {
   body { background: white; }
 }
+
+.pages-boundary {
+  position: fixed;
+  z-index: 20;
+  right: 14px;
+  bottom: 14px;
+  max-width: 390px;
+  padding: 9px 12px;
+  color: white;
+  border-radius: var(--abl-radius-sm);
+  background: var(--abl-charcoal);
+  font-size: 0.7rem;
+  letter-spacing: 0.025em;
+}

@@ -6,11 +6,17 @@
 
 Use the four-part journey on screen: legal transaction → support operating layer → Harvey enablement → continuous improvement. State that ABL's Harvey agreement is public, while all demonstrated use cases and results are synthetic.
 
-When showing the Harvey check, say:
+When showing the Harvey readiness assessment, say:
 
-> The court-facing claim is better-prepared, source-backed lawyer work—not that AI wins cases. The commercial claim is staged too: time released is tested first; profit is established only when finance and operational evidence show accepted capacity, lower write-downs, improved fixed-fee margin or realised revenue after full cost.
+> This does not prove Harvey improves quality or saves money. It proves that I have converted four legal-work ideas into controlled pilot designs, each with a need, source boundary, output contract, lawyer review, measures and stops. Representative ABL work and a baseline would be required to establish the benefit.
 
-## 0:00–0:45 — frame the hypothesis
+## Start — choose the proof point
+
+Open `http://127.0.0.1:8017/workbench`. Use the five-button selector to choose one focused proof. Do not begin in the full evidence workbench.
+
+Use `http://127.0.0.1:8017/cheatsheet` for the first-person rationale and evidence table.
+
+## 0:00–0:45 — frame the approach
 
 > I have not assumed ABL's current support process or configuration. This synthetic demonstration asks how an AI-assisted legal-technology support desk could improve triage and reuse while matter, access and communication decisions remain controlled and human-owned.
 
