@@ -4,7 +4,7 @@ A standalone demonstration of how a Digital Systems Lead could connect an ABL-st
 
 ABL publicly announced an agreement with Harvey on 1 September 2025 after a trial and co-development period. That public fact provides context only. Every ticket, legal-work pack, prompt result, time comparison and outcome in this project is synthetic; none represents ABL's private Harvey configuration, matter data, adoption, cost or realised results.
 
-It is anchored in the Matter Opening Control Room pattern: stable intake identifiers, approved requests, reference-data validation, lookup-before-create, safe replay, timeout recovery, authoritative matter identifiers and business reconciliation. It adds everyday service-desk triage, restricted-matter access and document-management support.
+It is anchored in the [**matter-opening-control-room**](https://github.com/jacquesonline/matter-opening-control-room) pattern: stable intake identifiers, approved requests, reference-data validation, lookup-before-create, safe replay, timeout recovery, authoritative matter identifiers and business reconciliation. It adds everyday service-desk triage, restricted-matter access and document-management support.
 
 This is not ABL data, architecture, configuration or a claim about its current support model. All people, matters, clients, systems and outcomes are fictional.
 
