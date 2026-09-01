@@ -144,3 +144,36 @@ h1, h2, h3, blockquote { letter-spacing: -0.025em; }
   font-size: 0.7rem;
   letter-spacing: 0.025em;
 }
+
+.aspiration-banner {
+  margin: 0 3vw 40px;
+  padding: 25px 28px;
+  color: white;
+  border-left: 6px solid var(--abl-accent);
+  background: var(--abl-charcoal);
+}
+.aspiration-banner .kicker { color: #f1aa96; }
+.aspiration-banner h2 { margin-bottom: 9px; font-size: clamp(1.8rem, 3vw, 2.7rem); line-height: 1.08; }
+.aspiration-banner > p { max-width: 960px; margin-bottom: 0; color: rgba(255,255,255,.75); }
+.aspiration-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 20px; background: rgba(255,255,255,.22); }
+.aspiration-grid div { padding: 15px; background: var(--abl-charcoal); }
+.aspiration-grid strong, .aspiration-grid small { display: block; }
+.aspiration-grid small { margin-top: 4px; color: rgba(255,255,255,.66); }
+.aspiration-panel {
+  display: grid;
+  grid-template-columns: 1fr .8fr;
+  gap: 40px;
+  align-items: end;
+  margin: 0 2vw 34px;
+  padding: 24px 27px;
+  color: white;
+  border-left: 6px solid var(--abl-accent);
+  background: var(--abl-charcoal);
+}
+.aspiration-panel h2 { margin: 0; font-size: 2.15rem; line-height: 1.05; }
+.aspiration-panel > p { margin: 0; color: rgba(255,255,255,.72); }
+
+@media (max-width: 560px) {
+  .aspiration-grid { grid-template-columns: 1fr; }
+  .aspiration-panel { grid-template-columns: 1fr; }
+}

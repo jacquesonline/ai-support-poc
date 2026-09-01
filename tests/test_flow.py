@@ -170,6 +170,22 @@ def test_public_pages_share_the_abl_inspired_brand_system():
     assert "not an official ABL brand guide" in css
 
 
+def test_aspirational_outcomes_are_separated_from_proven_evidence():
+    client = TestClient(app)
+    overview = client.get("/").text
+    assert "The ambition · not a claim of achieved benefit" in overview
+    assert "Legal quality" in overview
+    assert "Profit and cost" in overview
+    assert "Court preparation" in overview
+    harvey = client.get("/proofs/harvey").text
+    assert "What we aspire to improve" in harvey
+    assert "hypotheses to test—not outcomes" in harvey
+    value = client.get("/proofs/value").text
+    assert "Quality, profit and court impact begin as hypotheses" in value
+    cheat_sheet = client.get("/cheatsheet").text
+    assert "Those are aspirations, not results I am claiming" in cheat_sheet
+
+
 def test_scorecard_reconciles_actions_safe_stops_and_provider_use():
     client = TestClient(app)
     client.post("/tickets/1/investigate")
