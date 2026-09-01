@@ -174,6 +174,15 @@ def test_presenter_cheat_sheet_covers_narrative_system_proof_and_release_rules()
         "Release rules",
     ):
         assert phrase in page.text
+    assert page.text.count('class="proof-detail"') == 5
+    for phrase in (
+        "Matter-opening proof",
+        "AI-enabled support proof",
+        "Harvey legal-work proof",
+        "Continuous-improvement proof",
+        "Value and responsible-AI proof",
+    ):
+        assert phrase in page.text
 
 
 def test_public_pages_share_the_abl_inspired_brand_system():

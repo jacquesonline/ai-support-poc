@@ -8,6 +8,21 @@
 .cue { padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
 .cue span { display: block; margin-bottom: 6px; color: var(--teal); font-size: .7rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
 .cue p { margin: 0; color: var(--soft); }
+.details-heading { display: grid; grid-template-columns: 1fr .7fr; gap: 40px; margin-bottom: 20px; }
+.details-heading h2 { margin-bottom: 0; }
+.details-heading > p { color: var(--soft); }
+.proof-detail { border-top: 1px solid var(--ink); background: var(--surface); }
+.proof-detail:last-child { border-bottom: 1px solid var(--ink); }
+.proof-detail summary { position: relative; display: grid; grid-template-columns: 190px 1fr 1fr; gap: 22px; align-items: center; padding: 21px 54px 21px 20px; cursor: pointer; list-style: none; }
+.proof-detail summary::-webkit-details-marker { display: none; }
+.proof-detail summary::after { position: absolute; right: 20px; content: "+"; color: var(--teal); font-size: 1.7rem; font-weight: 400; }
+.proof-detail[open] summary::after { content: "−"; }
+.proof-detail summary span { color: var(--teal); font-size: .7rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.proof-detail summary strong { font: 500 1.35rem Georgia, serif; }
+.proof-detail summary small { color: var(--soft); }
+.proof-detail-body { padding: 0 20px 24px; border-top: 1px solid var(--line); }
+.proof-detail-body .talk-track { margin: 20px 0 14px; }
+.detail-link { display: inline-flex; margin-top: 16px; color: var(--teal); font-weight: 800; text-decoration: none; }
 .run-table { width: 100%; border-collapse: collapse; background: var(--surface); }
 .run-table th, .run-table td { padding: 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
 .run-table th { color: var(--teal); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
@@ -17,5 +32,5 @@
 .say-avoid article:last-child { border-top: 4px solid var(--coral); }
 .say-avoid ul { padding-left: 18px; color: var(--soft); }
 .print-button { cursor: pointer; border: 0; }
-@media(max-width:700px){.cue-grid,.say-avoid{grid-template-columns:1fr}.run-table{font-size:.84rem}}
-@media print{body{background:white}.proof-top,.next,.print-button{display:none}.proof-shell{width:100%}.sheet-title{padding-top:20px}.sheet-section{padding:20px 0}.cue,.talk-track,.say-avoid article{break-inside:avoid}}
+@media(max-width:700px){.cue-grid,.say-avoid,.details-heading{grid-template-columns:1fr}.proof-detail summary{grid-template-columns:1fr;gap:4px}.run-table{font-size:.84rem}}
+@media print{body{background:white}.proof-top,.next,.print-button{display:none}.proof-shell{width:100%}.sheet-title{padding-top:20px}.sheet-section{padding:20px 0}.proof-detail[open] .proof-detail-body{display:block}.cue,.talk-track,.say-avoid article{break-inside:avoid}}
