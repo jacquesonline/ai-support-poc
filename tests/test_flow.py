@@ -282,6 +282,21 @@ def test_harvey_context_is_public_but_use_cases_are_explicitly_synthetic():
     assert {item["primary_users"] for item in overview["use_cases"]}
 
 
+def test_harvey_proof_opens_a_dedicated_workflow_demonstrator():
+    client = TestClient(app)
+    proof = client.get("/proofs/harvey")
+    assert 'href="/harvey-demo"' in proof.text
+    assert "Demonstrate a Harvey workflow" in proof.text
+
+    demo = client.get("/harvey-demo")
+    assert demo.status_code == 200
+    assert "Harvey use-case demonstrator" in demo.text
+    assert "no Harvey API call" in demo.text
+    assert 'id="case-buttons"' in demo.text
+    assert 'id="assess-button"' in demo.text
+    assert '/static/brand.css' in demo.text
+
+
 def test_harvey_readiness_review_proves_pilot_design_without_claiming_outcomes():
     client = TestClient(app)
     run = client.post("/harvey/evaluate").json()

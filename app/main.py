@@ -81,6 +81,11 @@ def demo_cheatsheet() -> HTMLResponse:
     return branded_page("cheatsheet.html")
 
 
+@app.get("/harvey-demo", include_in_schema=False)
+def harvey_demo() -> HTMLResponse:
+    return branded_page("harvey-demo.html")
+
+
 @app.get("/proofs/{proof_name}", include_in_schema=False)
 def proof_page(proof_name: str) -> HTMLResponse:
     pages = {

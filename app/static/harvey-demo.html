@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Harvey use-case demonstrator</title>
+  <link rel="stylesheet" href="/static/harvey-demo.css">
+</head>
+<body>
+<div class="demo-shell">
+  <header class="demo-top">
+    <a class="back" href="/proofs/harvey">← Harvey proof point</a>
+    <span class="boundary">Demonstrator · no Harvey API call</span>
+  </header>
+
+  <main>
+    <section class="demo-intro">
+      <div>
+        <p class="eyebrow">Working design · controlled adoption</p>
+        <h1>Harvey use-case <em>demonstrator</em></h1>
+      </div>
+      <p class="lede">This shows how I would turn a legal-work request into a controlled Harvey workflow. It uses synthetic examples, does not connect to Harvey and does not use ABL matter data.</p>
+    </section>
+
+    <section class="workspace" aria-labelledby="choose-title">
+      <aside class="case-picker">
+        <p class="step-label">01 · Choose the work</p>
+        <h2 id="choose-title">What should Harvey assist with?</h2>
+        <div id="case-buttons" class="case-buttons" aria-label="Legal work patterns"><p class="loading">Loading use cases…</p></div>
+      </aside>
+
+      <article class="case-detail" aria-live="polite">
+        <div class="detail-heading">
+          <div><p class="step-label">02 · Define the contract</p><h2 id="case-name">Select a use case</h2></div>
+          <span id="case-users" class="owner-chip"></span>
+        </div>
+        <div id="case-content" class="detail-content">
+          <p class="empty">The controls, reusable assets and output contract will appear here.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="workflow-section" aria-labelledby="workflow-title">
+      <div class="section-heading"><div><p class="step-label">03 · Run the controlled workflow</p><h2 id="workflow-title">What the working system would do</h2></div><p>Harvey assists inside a governed process. It does not own the legal decision.</p></div>
+      <ol class="workflow">
+        <li><span>1</span><strong>Matter scope</strong><small>Confirm purpose, jurisdiction and accountable lawyer.</small></li>
+        <li><span>2</span><strong>Approved sources</strong><small>Apply access, privilege and information-barrier controls.</small></li>
+        <li><span>3</span><strong>Prompt + skill</strong><small>Use the approved, versioned method for this task.</small></li>
+        <li><span>4</span><strong>Harvey work product</strong><small>Produce the agreed table or draft with sources and gaps.</small></li>
+        <li><span>5</span><strong>Lawyer verification</strong><small>Check propositions, omissions, judgement and suitability.</small></li>
+        <li><span>6</span><strong>Outcome + learning</strong><small>Record acceptance, corrections, time, incidents and cost.</small></li>
+      </ol>
+    </section>
+
+    <section class="assessment" aria-labelledby="assessment-title">
+      <div><p class="step-label">04 · Decide whether to pilot</p><h2 id="assessment-title">Is this use case ready for a bounded pilot?</h2><p>A readiness pass means the experiment is controlled enough to start. It is not evidence that Harvey improves the work.</p></div>
+      <button id="assess-button" class="button primary" type="button">Assess this pilot design</button>
+      <div id="assessment-result" class="assessment-result" hidden></div>
+    </section>
+  </main>
+
+  <footer><a href="/proofs/harvey">← Return to the Harvey proof</a><a href="/proofs/improvement">Next: continuous improvement →</a></footer>
+</div>
+<script src="/static/harvey-demo.js"></script>
+</body>
+</html>

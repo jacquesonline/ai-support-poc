@@ -16,6 +16,7 @@ PAGES = {
     "proof-matter.html": "proofs/matter/index.html",
     "proof-support.html": "proofs/support/index.html",
     "proof-harvey.html": "proofs/harvey/index.html",
+    "harvey-demo.html": "harvey-demo/index.html",
     "proof-improvement.html": "proofs/improvement/index.html",
     "proof-value.html": "proofs/value/index.html",
 }
@@ -34,6 +35,7 @@ def pages_html(source: str) -> str:
         'href="/proofs/harvey"': f'href="{BASE}proofs/harvey/"',
         'href="/proofs/improvement"': f'href="{BASE}proofs/improvement/"',
         'href="/proofs/value"': f'href="{BASE}proofs/value/"',
+        'href="/harvey-demo"': f'href="{BASE}harvey-demo/"',
         'href="/workbench/full"': 'href="https://github.com/jacquesonline/ai-support-poc"',
         'href="/workbench#harvey"': f'href="{BASE}workbench/"',
         'href="/workbench"': f'href="{BASE}workbench/"',
