@@ -131,12 +131,36 @@ function renderScenarios() {
   });
 }
 
+function focusedView() {
+  return document.body.dataset.workbenchView || "";
+}
+
+function defaultRunLabel() {
+  if (focusedView() === "matter") return "Assess matter transaction";
+  if (focusedView() === "support") return "Investigate support request";
+  return "Investigate request";
+}
+
+function configureScenarioView() {
+  if (focusedView() === "matter") {
+    el("scenario-set-label").textContent = "Matter transaction set";
+    el("scenario-set-title").textContent = "Choose a matter condition";
+    el("scenario-set-description").textContent = "Creation, replay, reference-data and recovery conditions use one transaction-control workflow.";
+    el("selected-case-label").textContent = "Selected matter condition";
+  } else if (focusedView() === "support") {
+    el("scenario-set-label").textContent = "Support request set";
+    el("scenario-set-title").textContent = "Choose a support condition";
+    el("scenario-set-description").textContent = "Restricted-access and general-IT requests reuse the evidence, control and human-authority pattern without duplicating matter cases.";
+    el("selected-case-label").textContent = "Selected support request";
+  }
+}
+
 function selectScenario(id) {
   state.selectedId = id;
   const scenario = state.scenarios.find((item) => item.id === id);
   el("selected-name").textContent = scenario?.name || "Choose a scenario";
   el("run-case").disabled = !scenario;
-  el("run-case").textContent = state.cases.has(id) ? "Run again" : "Investigate request";
+  el("run-case").textContent = state.cases.has(id) ? "Run again" : defaultRunLabel();
   renderScenarios();
   if (state.cases.has(id)) {
     renderCase(state.cases.get(id));
@@ -527,9 +551,13 @@ async function initialise() {
       fetchJson("/harvey/overview"),
     ]);
     state.brief = brief;
-    state.scenarios = document.body.dataset.workbenchView === "matter"
+    const view = focusedView();
+    state.scenarios = view === "matter"
       ? scenarios.filter((scenario) => scenario.category === "matter_opening")
-      : scenarios;
+      : view === "support"
+        ? scenarios.filter((scenario) => scenario.category !== "matter_opening")
+        : scenarios;
+    configureScenarioView();
     renderBrief();
     renderScenarios();
     renderImprovementOverview(improvement);

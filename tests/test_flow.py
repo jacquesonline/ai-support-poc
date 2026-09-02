@@ -156,13 +156,39 @@ def test_working_evidence_is_split_into_focused_proof_pages():
         page = client.get(f"/workbench/{proof}")
         assert page.status_code == 200
         assert all(phrase in page.text for phrase in phrases)
+        if proof != "harvey":
+            assert 'id="reset-demo"' in page.text
+            assert 'class="button ghost topbar-reset"' in page.text
     assert client.get("/workbench/unknown").status_code == 404
     assert "former combined workbench has been retired" in client.get("/workbench/full").text
+
+
+def test_matter_and_support_partition_one_six_case_contract():
+    client = TestClient(app)
+    scenarios = client.get("/demo/scenarios").json()
+    assert sum(item["category"] == "matter_opening" for item in scenarios) == 4
+    assert sum(item["category"] != "matter_opening" for item in scenarios) == 2
+
+    support_page = client.get("/workbench/support").text
+    assert 'src="/static/demo.js?v=0.5.1"' in support_page
+
+    script = client.get("/static/demo.js").text
+    assert 'scenario.category === "matter_opening"' in script
+    assert 'scenario.category !== "matter_opening"' in script
+    assert 'return "Assess matter transaction"' in script
+    assert 'return "Investigate support request"' in script
+
+    support_proof = client.get("/proofs/support").text
+    assert "Two support cases extend the transaction-control pattern" in support_proof
+    assert "partitioned six-case contract" in support_proof
 
 
 def test_presenter_cheat_sheet_covers_narrative_system_proof_and_release_rules():
     page = TestClient(app).get("/cheatsheet")
     assert page.status_code == 200
+    assert "<title>The Demo's Rationale</title>" in page.text
+    assert "I identified a hypothesis worth testing" in page.text
+    assert "Cost finding: instrumented, not solved" in page.text
     for phrase in (
         "What I identified",
         "What I designed",
@@ -183,6 +209,12 @@ def test_presenter_cheat_sheet_covers_narrative_system_proof_and_release_rules()
         "Value and responsible-AI proof",
     ):
         assert phrase in page.text
+
+
+def test_workbench_uses_the_shared_core_principle():
+    page = TestClient(app).get("/workbench/matter")
+    assert "AI prepares.<br>Rules constrain.<br>People decide." in page.text
+    assert "Policy constrains" not in page.text
 
 
 def test_public_pages_share_the_abl_inspired_brand_system():

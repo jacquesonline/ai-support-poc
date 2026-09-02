@@ -74,6 +74,19 @@ a {
   border-bottom: 1px solid var(--line);
 }
 
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button.topbar-reset {
+  min-height: 36px;
+  padding: 8px 12px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
 .brand {
   display: inline-flex;
   gap: 12px;

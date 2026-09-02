@@ -1,6 +1,6 @@
 # Legal Technology Support Control Room
 
-**Presentation:** [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/)
+**Optional presentation-only site:** [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/) — verify availability before relying on it.
 
 **Related project:** [matter-opening-control-room](https://github.com/jacquesonline/matter-opening-control-room)
 
@@ -51,16 +51,11 @@ request → check the evidence → prepare a recommendation → accountable pers
 - **Staff:** safer self-service and a clear path to a responsible support owner.
 - **Technology leaders:** evidence about service quality, adoption, risk, relevance and full operating cost before deciding to scale.
 
-### Documents to use during the demonstration
+### Presentation boundary
 
-The meeting material is isolated in [`documents/demo`](documents/demo/):
+The remotely shareable material is the working synthetic application, its evidence and tests, and the audience-safe architecture and control documentation. Presenter scripts, timings, likely-question answers, rehearsal notes and recovery instructions are maintained locally under `documents/demo/` and are deliberately excluded from version control and panel sharing.
 
-1. [CIO demonstration cheat sheet](documents/demo/CIO_DEMO_CHEAT_SHEET.md) — the concise narrative and language to use.
-2. [Demonstration guide](documents/demo/DEMO_GUIDE.md) — the timed spoken route and proof sequence.
-3. [Tomorrow's demonstration checklist](documents/demo/TOMORROW_DEMO_CHECKLIST.md) — setup, safe claims and recovery steps.
-4. [Demonstration checkpoint](documents/demo/DEMO_CHECKPOINT.md) — the latest known presentation state and restart point.
-
-For the local presentation, open the [executive overview](http://127.0.0.1:8017/), the [proof-point chooser](http://127.0.0.1:8017/workbench) and [The Demo's Rational](http://127.0.0.1:8017/cheatsheet).
+For a local presentation, open the [executive overview](http://127.0.0.1:8017/), the [proof-point chooser](http://127.0.0.1:8017/workbench) and [The Demo's Rationale](http://127.0.0.1:8017/cheatsheet). These pages are audience-safe; the local presenter documents are not part of the shared pack.
 
 ## 2. Technical community guide
 
@@ -78,7 +73,7 @@ Detailed references:
 
 - `app/` — FastAPI application, synthetic workflows, policy controls and presentation UI.
 - `tests/` — credential-free integration and control tests.
-- `documents/demo/` — only the material needed to prepare and deliver the demonstration.
+- `documents/demo/` — local-only presenter preparation; ignored by version control and excluded from remote sharing.
 - `documents/general/` — architecture, sharing and visual-design documentation.
 - `prompts/` — active, candidate, oversight and Harvey legal-work prompts.
 - `skills/` — reusable support, improvement, Harvey-work and value-review packages.
@@ -96,23 +91,13 @@ python -m pip install -e ".[dev]"
 .\start-demo.ps1
 ```
 
-The default mode is credential-free and uses only in-memory synthetic data. Working evidence is split across focused pages for [matter opening](http://127.0.0.1:8017/workbench/matter), [support](http://127.0.0.1:8017/workbench/support), [Harvey](http://127.0.0.1:8017/workbench/harvey), [continuous improvement](http://127.0.0.1:8017/workbench/improvement) and [value](http://127.0.0.1:8017/workbench/value).
+The default mode is credential-free and uses only in-memory synthetic data. Matter and Support are two proofs within one governed operating model, not two applications. [Matter opening](http://127.0.0.1:8017/workbench/matter) is the depth proof: four transaction conditions test authoritative reconciliation, duplicate prevention, reference control and safe recovery. [Support](http://127.0.0.1:8017/workbench/support) is the transferability proof: two non-transaction requests test whether the same evidence, control and human-authority pattern travels to restricted access and general IT. The [continuous-improvement](http://127.0.0.1:8017/workbench/improvement) regression recombines all six to test the shared method. Separate focused pages remain available for [Harvey](http://127.0.0.1:8017/workbench/harvey) and [value](http://127.0.0.1:8017/workbench/value).
 
-The presentation-only GitHub Pages edition is published at [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/). GitHub Pages cannot run the FastAPI backend, so interactive ticket actions and evaluation runs remain available in the local application. The Pages workflow exports the overview, proof pages, selector and rationale after each push to `main`.
+The presentation-only GitHub Pages edition can be published at [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/) after the repository visibility and Pages configuration have been deliberately approved and verified. GitHub Pages cannot run the FastAPI backend, so interactive ticket actions and evaluation runs remain available only in the local application. The local application is the authoritative demonstration; the Pages workflow exports the overview, proof pages, selector and rationale after each push to `main` when hosting is enabled.
 
-### CIO demonstration route
+### Local demonstration route
 
-1. State the ABL-style hypothesis and explicit non-current-state boundary.
-2. Run **Approved matter not yet available** and approve it as the named support owner.
-3. Run **Replay could create a duplicate** or **Timeout after matter creation** to show stable-ID and safe-recovery controls.
-4. Run **Unmapped office reference** and **Restricted matter access**; both stop before provider use and reject an approval override.
-5. Run **Document add-in unavailable** to show safe day-to-day IT guidance and data minimisation.
-6. Run the four-use-case Harvey readiness review. Show that every proposed pilot has sources, review, measures and stops, while quality, time and value remain unproven until representative ABL work is evaluated.
-7. Make the evidence boundary explicit: the readiness review proves the pilot design, while quality, capacity and financial value require representative ABL work, a baseline and full operating cost.
-8. Run the six-case prompt regression and show that activation remains a named decision.
-9. Close on change-triggered regression, weekly adoption and quality review, monthly relevance and total-cost decisions, and the option to change, replace, retire or stop.
-
-See the [demonstration guide](documents/demo/DEMO_GUIDE.md) for the full spoken route.
+The ignored local file `documents/demo/DEMO_GUIDE.md` is the presenter source of truth for sequence, timing and likely questions. Those interview-preparation details are intentionally absent from the remote repository.
 
 ### Six-case regression contract
 

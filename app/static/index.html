@@ -21,7 +21,10 @@
       <nav class="proof-nav" aria-label="Demonstration proof points">
         <a href="/workbench/matter">01 Matter</a><a href="/workbench/support">02 Support</a><a href="/workbench/harvey">03 Harvey</a><a href="/workbench/improvement">04 Improve</a><a href="/workbench/value">05 Value</a>
       </nav>
-      <div class="boundary-badge"><span class="pulse"></span>Synthetic · not ABL configuration</div>
+      <div class="topbar-actions">
+        <button class="button ghost topbar-reset" id="reset-demo" type="button" aria-label="Reset synthetic demo">Reset demo</button>
+        <div class="boundary-badge"><span class="pulse"></span>Synthetic · not ABL configuration</div>
+      </div>
     </header>
 
     <main id="top">
@@ -33,12 +36,11 @@
           <p class="hero-thesis">I built this to show how I would improve outcomes for ABL’s lawyers, partners and staff: start with matter opening, support day-to-day requests, apply the same controls to Harvey, harvest what works, and continuously test quality, risk and cost.</p>
           <div class="hero-actions">
             <a class="button primary" href="#story">Follow the five proof points</a>
-            <button class="button ghost" id="reset-demo" type="button">Reset synthetic demo</button>
           </div>
         </div>
         <aside class="principle-card" aria-label="Core principle">
           <p class="card-kicker">Core principle</p>
-          <blockquote>AI prepares.<br>Policy constrains.<br>People decide.</blockquote>
+          <blockquote>AI prepares.<br>Rules constrain.<br>People decide.</blockquote>
           <div class="principle-rule"></div>
           <p>No model can create a matter, alter reference data, grant access or contact a legal professional. Evidence, exact controls and named people retain authority.</p>
         </aside>
@@ -101,9 +103,9 @@
       <section class="control-room" id="control-room">
         <aside class="scenario-panel">
           <div class="panel-heading">
-            <p class="eyebrow">Evaluation set</p>
-            <h2>Choose a case</h2>
-            <p>Normal, boundary and failure conditions use the same workflow and controls.</p>
+            <p class="eyebrow" id="scenario-set-label">Evaluation set</p>
+            <h2 id="scenario-set-title">Choose a case</h2>
+            <p id="scenario-set-description">Normal, boundary and failure conditions use the same workflow and controls.</p>
           </div>
           <div id="scenario-list" class="scenario-list" role="list"></div>
         </aside>
@@ -111,7 +113,7 @@
         <section class="case-panel" aria-live="polite">
           <div class="case-toolbar">
             <div>
-              <p class="eyebrow">Selected case</p>
+              <p class="eyebrow" id="selected-case-label">Selected case</p>
               <h2 id="selected-name">Choose a scenario</h2>
             </div>
             <button id="run-case" class="button primary" type="button" disabled>Investigate request</button>
@@ -368,6 +370,6 @@
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="/static/demo.js" defer></script>
+  <script src="/static/demo.js?v=0.5.1" defer></script>
 </body>
 </html>
