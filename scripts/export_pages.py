@@ -1,7 +1,9 @@
 """Export presentation routes as a GitHub Pages-compatible static site."""
 
 from pathlib import Path
+import os
 import shutil
+import stat
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -20,6 +22,12 @@ PAGES = {
     "proof-improvement.html": "proofs/improvement/index.html",
     "proof-value.html": "proofs/value/index.html",
 }
+
+
+def remove_readonly(func, path: str, _exc_info) -> None:
+    """Allow generated OneDrive files to be replaced during a clean export."""
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
 
 
 def pages_html(source: str) -> str:
@@ -70,7 +78,7 @@ def pages_html(source: str) -> str:
 
 def main() -> None:
     if OUTPUT.exists():
-        shutil.rmtree(OUTPUT)
+        shutil.rmtree(OUTPUT, onerror=remove_readonly)
     (OUTPUT / "static").mkdir(parents=True)
 
     for asset in STATIC.iterdir():
