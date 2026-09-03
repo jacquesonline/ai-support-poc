@@ -1,8 +1,8 @@
 # Legal Technology Support Control Room
 
-**Optional presentation-only site:** [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/) — verify availability before relying on it.
+**Interactive GitHub Pages demo:** [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/) — a browser-only, synthetic control-workbench demonstration.
 
-**Related project:** [matter-opening-control-room](https://github.com/jacquesonline/matter-opening-control-room)
+**Related project:** [matter-opening-control-room](https://github.com/jacquesonline/matter-opening-control-room) — a focused matter-opening control-room demonstration.
 
 This standalone proof of concept shows how a Digital Systems Lead could connect an ABL-style matter transaction, an AI-enabled legal-technology support desk, Harvey-assisted legal work and governed continuous improvement.
 
@@ -93,7 +93,7 @@ python -m pip install -e ".[dev]"
 
 The default mode is credential-free and uses only in-memory synthetic data. Matter and Support are two proofs within one governed operating model, not two applications. [Matter opening](http://127.0.0.1:8017/workbench/matter) is the depth proof: four transaction conditions test authoritative reconciliation, duplicate prevention, reference control and safe recovery. [Support](http://127.0.0.1:8017/workbench/support) is the transferability proof: two non-transaction requests test whether the same evidence, control and human-authority pattern travels to restricted access and general IT. The [continuous-improvement](http://127.0.0.1:8017/workbench/improvement) regression recombines all six to test the shared method. Separate focused pages remain available for [Harvey](http://127.0.0.1:8017/workbench/harvey) and [value](http://127.0.0.1:8017/workbench/value).
 
-The presentation-only GitHub Pages edition can be published at [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/) after the repository visibility and Pages configuration have been deliberately approved and verified. GitHub Pages cannot run the FastAPI backend, so interactive ticket actions and evaluation runs remain available only in the local application. The local application is the authoritative demonstration; the Pages workflow exports the overview, proof pages, selector and rationale after each push to `main` when hosting is enabled.
+The GitHub Pages edition is available at [jacquesonline.github.io/ai-support-poc](https://jacquesonline.github.io/ai-support-poc/). It includes a browser-only synthetic control workbench for matter opening, AI-enabled support and continuous improvement, alongside the overview, proof pages, Harvey demonstrator and rationale. GitHub Pages cannot run the FastAPI backend, so the full local application remains the authoritative environment for server-backed ticket actions and evaluation runs.
 
 ### Local demonstration route
 
