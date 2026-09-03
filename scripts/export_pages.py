@@ -8,7 +8,9 @@ import stat
 
 ROOT = Path(__file__).resolve().parent.parent
 STATIC = ROOT / "app" / "static"
-OUTPUT = ROOT / "_site"
+# An override supports clean verification without replacing a locally synced
+# deployment directory. GitHub Actions uses the default `_site` location.
+OUTPUT = Path(os.environ.get("PAGES_OUTPUT_DIR", ROOT / "_site"))
 BASE = "/ai-support-poc/"
 
 PAGES = {
@@ -17,8 +19,8 @@ PAGES = {
     "cheatsheet.html": "cheatsheet/index.html",
     "proof-matter.html": "proofs/matter/index.html",
     "proof-support.html": "proofs/support/index.html",
-    "proof-harvey.html": "proofs/harvey/index.html",
-    "harvey-demo.html": "harvey-demo/index.html",
+    "proof-harvey.html": "proofs/legal-ai/index.html",
+    "harvey-demo.html": "legal-ai-demo/index.html",
     "proof-improvement.html": "proofs/improvement/index.html",
     "proof-value.html": "proofs/value/index.html",
 }
@@ -40,17 +42,17 @@ def pages_html(source: str) -> str:
         'src="/static/': f'src="{BASE}static/',
         'href="/proofs/matter"': f'href="{BASE}proofs/matter/"',
         'href="/proofs/support"': f'href="{BASE}proofs/support/"',
-        'href="/proofs/harvey"': f'href="{BASE}proofs/harvey/"',
+        'href="/proofs/harvey"': f'href="{BASE}proofs/legal-ai/"',
         'href="/proofs/improvement"': f'href="{BASE}proofs/improvement/"',
         'href="/proofs/value"': f'href="{BASE}proofs/value/"',
-        'href="/harvey-demo"': f'href="{BASE}harvey-demo/"',
+        'href="/harvey-demo"': f'href="{BASE}legal-ai-demo/"',
         'href="/workbench/matter"': f'href="{BASE}workbench/#matter"',
         'href="/workbench/support"': f'href="{BASE}workbench/#access"',
-        'href="/workbench/harvey"': f'href="{BASE}harvey-demo/"',
+        'href="/workbench/harvey"': f'href="{BASE}legal-ai-demo/"',
         'href="/workbench/improvement"': f'href="{BASE}workbench/#improvement"',
         'href="/workbench/value"': f'href="{BASE}workbench/#improvement"',
         'href="/workbench/full"': 'href="https://github.com/jacquesonline/ai-support-poc"',
-        'href="/workbench#harvey"': f'href="{BASE}harvey-demo/"',
+        'href="/workbench#harvey"': f'href="{BASE}legal-ai-demo/"',
         'href="/workbench"': f'href="{BASE}workbench/"',
         'href="/cheatsheet"': f'href="{BASE}cheatsheet/"',
         'href="/#control-room"': f'href="{BASE}workbench/"',
@@ -69,9 +71,24 @@ def pages_html(source: str) -> str:
     for old, new in replacements.items():
         html = html.replace(old, new)
 
+    # The public edition is deliberately organisation- and vendor-neutral.
+    # Keep the richer interview prototype local; never let its scenario labels
+    # imply an employer relationship, a vendor integration, or private access.
+    public_wording = {
+        "ABL-style": "legal-services",
+        "ABL’s": "the organisation’s",
+        "ABL": "the organisation",
+        "Harvey": "AI-assisted legal work",
+        "harvey-demo.css": "legal-ai-demo.css",
+        "harvey-demo.js": "legal-ai-demo.js",
+        "harvey": "legalAi",
+    }
+    for old, new in public_wording.items():
+        html = html.replace(old, new)
+
     banner = (
-        '<div class="pages-boundary">GitHub Pages presentation edition · '
-        'interactive evidence runs in the local application</div>'
+        '<div class="pages-boundary">Independent synthetic demonstration · '
+        'no private client, employer or vendor data</div>'
     )
     return html.replace("</body>", f"{banner}</body>")
 
@@ -83,7 +100,19 @@ def main() -> None:
 
     for asset in STATIC.iterdir():
         if asset.is_file() and asset.suffix in {".css", ".js", ".svg"}:
-            shutil.copy2(asset, OUTPUT / "static" / asset.name)
+            target_name = asset.name.replace("harvey-demo", "legal-ai-demo")
+            target = OUTPUT / "static" / target_name
+            if asset.suffix in {".css", ".js"}:
+                content = asset.read_text(encoding="utf-8")
+                content = content.replace("ABL", "the organisation")
+                content = content.replace("Harvey ", "AI-assisted legal work ")
+                content = content.replace('Harvey"', 'AI-assisted legal work"')
+                content = content.replace("harvey-demo", "legal-ai-demo")
+                content = content.replace("harvey", "legalAi")
+                content = content.replace("--abl-", "--legal-")
+                target.write_text(content, encoding="utf-8")
+            else:
+                shutil.copy2(asset, target)
 
     for source, destination in PAGES.items():
         target = OUTPUT / destination

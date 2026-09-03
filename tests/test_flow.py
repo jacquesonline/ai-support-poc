@@ -126,7 +126,7 @@ def test_each_cio_proof_point_has_a_separate_narrative_page():
     expected = {
         "matter": "The matter is approved",
         "support": "Turn tickets into",
-        "harvey": "Turn a Harvey idea",
+        "harvey": "Turn an AI-assisted legal-work idea",
         "improvement": "Harvest what works",
         "value": "Put ethics and economics",
     }
@@ -362,7 +362,7 @@ def test_harvey_proof_opens_a_dedicated_workflow_demonstrator():
     client = TestClient(app)
     proof = client.get("/proofs/harvey")
     assert 'href="/harvey-demo"' in proof.text
-    assert "Demonstrate a Harvey workflow" in proof.text
+    assert "Demonstrate the workflow" in proof.text
 
     demo = client.get("/harvey-demo")
     assert demo.status_code == 200
