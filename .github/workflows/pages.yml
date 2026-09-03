@@ -1,4 +1,4 @@
-name: Deploy presentation to GitHub Pages
+name: Publish static presentation to GitHub Pages
 
 on:
   push:
@@ -7,32 +7,52 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: public-pages-publish
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out private source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Export static presentation
+
+      - name: Export the public static edition
         run: python scripts/export_pages.py
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+
+      - name: Publish to public Pages repository
+        env:
+          PAGES_DEPLOY_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          TARGET_REPOSITORY: jacquesonline/ai-support-poc
+          SOURCE_DIRECTORY: _site
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$PAGES_DEPLOY_TOKEN"
+          test -d "$SOURCE_DIRECTORY"
+
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          publish_directory="$(mktemp -d)"
+          git clone "https://x-access-token:${PAGES_DEPLOY_TOKEN}@github.com/${TARGET_REPOSITORY}.git" "$publish_directory"
+          cd "$publish_directory"
+          git checkout -B main
+
+          rsync -a --delete --exclude .git "$GITHUB_WORKSPACE/$SOURCE_DIRECTORY/" "$publish_directory/"
+          touch .nojekyll
+          git add --all
+          if git diff --cached --quiet; then
+            echo "No public-site changes to publish."
+            exit 0
+          fi
+
+          git commit -m "Publish ${GITHUB_REPOSITORY}@${GITHUB_SHA}"
+          git push origin HEAD:main

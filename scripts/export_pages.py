@@ -51,7 +51,7 @@ def pages_html(source: str) -> str:
         'href="/workbench/harvey"': f'href="{BASE}legal-ai-demo/"',
         'href="/workbench/improvement"': f'href="{BASE}workbench/#improvement"',
         'href="/workbench/value"': f'href="{BASE}workbench/#improvement"',
-        'href="/workbench/full"': 'href="https://github.com/jacquesonline/ai-support-poc"',
+        'href="/workbench/full"': f'href="{BASE}workbench/"',
         'href="/workbench#harvey"': f'href="{BASE}legal-ai-demo/"',
         'href="/workbench"': f'href="{BASE}workbench/"',
         'href="/cheatsheet"': f'href="{BASE}cheatsheet/"',
@@ -66,7 +66,7 @@ def pages_html(source: str) -> str:
         "Open regression evidence →": "Return to the proof selector →",
         "Open value evidence →": "Return to the proof selector →",
         "The combined control room is retained for detailed technical evidence only.": "The full interactive control room requires the local FastAPI runtime.",
-        "Open the full evidence workbench": "View the source and local run instructions",
+        "Open the full evidence workbench": "Open the interactive demonstration",
     }
     for old, new in replacements.items():
         html = html.replace(old, new)
@@ -86,6 +86,15 @@ def pages_html(source: str) -> str:
     for old, new in public_wording.items():
         html = html.replace(old, new)
 
+    # Repair compound phrases after the intentionally simple name replacement.
+    html = html.replace("AI-assisted legal work-enabled legal work", "AI-assisted legal work")
+    html = html.replace("AI-assisted legal work legal work", "AI-assisted legal work")
+    html = html.replace("AI-assisted legal work work product", "AI-assisted legal-work product")
+    html = html.replace("A AI-assisted", "An AI-assisted")
+    html = html.replace("My proposed the organisation operating model", "My proposed operating model")
+    html = html.replace("representative the organisation pilots", "representative pilots")
+    html = html.replace("an the organisation budget", "an organisation budget")
+
     banner = (
         '<div class="pages-boundary">Independent synthetic demonstration · '
         'no private client, employer or vendor data</div>'
@@ -99,14 +108,18 @@ def main() -> None:
     (OUTPUT / "static").mkdir(parents=True)
 
     for asset in STATIC.iterdir():
+        # This browser-only presentation must not carry the local FastAPI
+        # workbench client, even as an unused file. It contains server-route
+        # assumptions and internal prototype identifiers.
+        if asset.name == "demo.js":
+            continue
         if asset.is_file() and asset.suffix in {".css", ".js", ".svg"}:
             target_name = asset.name.replace("harvey-demo", "legal-ai-demo")
             target = OUTPUT / "static" / target_name
             if asset.suffix in {".css", ".js"}:
                 content = asset.read_text(encoding="utf-8")
                 content = content.replace("ABL", "the organisation")
-                content = content.replace("Harvey ", "AI-assisted legal work ")
-                content = content.replace('Harvey"', 'AI-assisted legal work"')
+                content = content.replace("Harvey", "AI-assisted legal work")
                 content = content.replace("harvey-demo", "legal-ai-demo")
                 content = content.replace("harvey", "legalAi")
                 content = content.replace("--abl-", "--legal-")
