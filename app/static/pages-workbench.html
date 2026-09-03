@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive control workbench</title>
+  <link rel="stylesheet" href="/static/proof.css">
+  <link rel="stylesheet" href="/static/pages-workbench.css">
+</head>
+<body>
+<div class="proof-shell browser-demo">
+  <header class="proof-top"><a class="back" href="/">← Demonstration overview</a><nav><a href="/proofs/matter">Matter</a><a href="/proofs/support">Support</a><a href="/proofs/harvey">Harvey</a><a href="/proofs/improvement">Improve</a><a href="/proofs/value">Value</a></nav></header>
+  <main>
+    <section class="workbench-hero">
+      <p class="eyebrow">Browser demonstrator · synthetic data only</p>
+      <h1>Run a controlled <em>work scenario.</em></h1>
+      <p>This is a self-contained GitHub Pages version. It simulates the controls and evidence trail in your browser; it makes no API calls, changes no external system and resets on refresh.</p>
+    </section>
+    <section class="demo-layout" aria-label="Interactive control workbench">
+      <aside class="scenario-panel"><p class="eyebrow">01 · Select a scenario</p><div id="scenario-list" class="scenario-list"></div></aside>
+      <section class="run-panel" aria-live="polite">
+        <p class="eyebrow" id="scenario-area">02 · Controlled run</p>
+        <h2 id="scenario-title">Choose a scenario</h2>
+        <p id="scenario-description">Select a synthetic case to inspect its boundary and run it.</p>
+        <div id="case-facts" class="case-facts"></div>
+        <button id="run-scenario" class="button primary" type="button">Run controlled scenario</button>
+        <div id="run-result" class="run-result" hidden></div>
+      </section>
+    </section>
+    <section class="evidence-section"><div><p class="eyebrow">03 · Evidence retained</p><h2>Audit trail</h2></div><ol id="audit-trail" class="audit-trail"><li>Select and run a scenario to create its synthetic evidence trail.</li></ol></section>
+  </main>
+  <footer><a href="/">← Overview</a><a href="/cheatsheet">Open the demo rationale →</a></footer>
+</div>
+<script src="/static/pages-workbench.js"></script>
+</body>
+</html>
