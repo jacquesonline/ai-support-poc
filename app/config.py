@@ -9,9 +9,6 @@ class Settings(BaseSettings):
     openai_model: str = "gpt-5.4-mini"
     model_input_cost_per_million_aud: float | None = None
     model_output_cost_per_million_aud: float | None = None
-    ticket_backend: str = "memory"
-    zammad_url: str = "http://localhost:8080"
-    zammad_token: str | None = None
     experiment_spend_cap_aud: float = 25.0
     experiment_model_call_cap: int = 12
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")

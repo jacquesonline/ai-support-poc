@@ -177,6 +177,6 @@ The credential-free suite covers all six service-desk cases, matter idempotency 
 
 ### Optional live adapters and production boundary
 
-The OpenAI and Zammad adapters remain optional technical extension points. Use them only with approved accounts, synthetic data, current approved rates and organisation-specific security controls. Pricing is not hard-coded; when rates are absent, a live-model action is blocked rather than assigned an invented cost.
+The OpenAI adapter remains an optional technical extension point. The Zammad integration now lives in the neighbouring `zammad-ticketing-adapter` project, keeping this demonstration credential-free and focused on its synthetic control workflow. Pricing is not hard-coded; when rates are absent, a live-model action is blocked rather than assigned an invented cost.
 
 Production use would still require verified systems of record, authentication and RBAC, privilege and privacy design, durable audit and decision records, supported vendor interfaces, webhook validation, queues and bounded retry, monitoring, incident response, records management, evaluation data approval and operating ownership.

@@ -13,7 +13,7 @@ from app.harvey import HarveyValueService
 from app.models import Approval, ChangeDecision
 from app.policy import PolicyEngine
 from app.service import AutomationService
-from app.tickets import MemoryTicketAdapter, ZammadAdapter
+from app.tickets import MemoryTicketAdapter
 
 settings = get_settings()
 project_root = Path(__file__).resolve().parent.parent
@@ -25,7 +25,7 @@ improvement = SupportImprovementService(
 harvey = HarveyValueService()
 memory = MemoryTicketAdapter()
 seed_demo_tickets(memory)
-tickets = ZammadAdapter(settings.zammad_url, settings.zammad_token or "") if settings.ticket_backend == "zammad" else memory
+tickets = memory
 ai = (
     OpenAIDecisionProvider(
         settings.openai_api_key or "",
@@ -119,7 +119,7 @@ def health() -> dict:
     return {
         "ok": True,
         "ai_provider": settings.ai_provider,
-        "ticket_backend": settings.ticket_backend,
+        "ticket_backend": "memory",
         "demo_boundary": "synthetic",
     }
 
@@ -131,15 +131,11 @@ def demo_brief() -> dict:
 
 @app.get("/demo/scenarios")
 def demo_scenarios() -> list[dict]:
-    if not isinstance(tickets, MemoryTicketAdapter):
-        raise HTTPException(400, "Synthetic scenarios are only available for the memory backend")
     return scenario_summaries()
 
 
 @app.post("/demo/seed")
 def seed() -> dict:
-    if not isinstance(tickets, MemoryTicketAdapter):
-        raise HTTPException(400, "Seed endpoint is only available for the memory backend")
     seed_demo_tickets(tickets)
     service.reset()
     improvement.reset()
